@@ -4,27 +4,25 @@
     <title>Resume Screening NLP</title>
 </head>
 <body>
-    <h2>Resume Screening & Skill Gap Analyzer</h2>
 
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="resume" required><br><br>
-        <textarea name="jd" placeholder="Paste Job Description" rows="6" cols="60" required></textarea><br><br>
-        <button type="submit">Analyze</button>
-    </form>
+<h2>📄 Resume Screening & Skill Gap Analyzer</h2>
 
-    {% if score %}
-        <h3>Match Score: {{ score }}%</h3>
-<h3>Overall Text Match Score: {{ score }}%</h3>
-<h3>Skill Match Score: {{ skill_score }}%</h3>
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="resume" required><br><br>
+    <textarea name="jd" rows="6" placeholder="Paste job description here" required></textarea><br><br>
+    <button type="submit">Analyze Resume</button>
+</form>
 
-<h4>JD Required Skills:</h4>
-<p>{{ jd_skills }}</p>
+{% if match_score is not none %}
+<hr>
+<h3>✅ Analysis Result</h3>
 
-        <h4>Extracted Skills:</h4>
-        <p>{{ skills }}</p>
+<p><b>Match Score:</b> {{ match_score }}%</p>
 
-        <h4>Missing Skills:</h4>
-        <p>{{ missing }}</p>
-    {% endif %}
+<p><b>Resume Skills:</b> {{ extracted_skills }}</p>
+<p><b>JD Skills:</b> {{ jd_skills }}</p>
+<p><b>Missing Skills:</b> {{ missing_skills }}</p>
+{% endif %}
+
 </body>
 </html>
