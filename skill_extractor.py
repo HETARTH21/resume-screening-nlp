@@ -1,12 +1,14 @@
-import re
+def extract_skills(text):
+    skills_list = [
+        "python", "java", "c++", "sql", "machine learning",
+        "data analysis", "nlp", "flask", "git", "linux"
+    ]
 
-def extract_skills(text, skill_list):
     text = text.lower()
-    extracted_skills = []
+    extracted = []
 
-    for skill in skill_list:
-        pattern = r"\b" + re.escape(skill.lower()) + r"\b"
-        if re.search(pattern, text):
-            extracted_skills.append(skill)
+    for skill in skills_list:
+        if skill in text:
+            extracted.append(skill)
 
-    return extracted_skills
+    return extracted
